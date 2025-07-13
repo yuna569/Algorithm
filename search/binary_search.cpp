@@ -26,7 +26,7 @@ int binary_search(int arr[], int n, int x) {
 // 인덱스 반환
 int recursive_binary_search_v1(int arr[], int n, int x) {
     cout << "arr: " << arr << " n: " << n << endl;
-    if (n==0) return -100;      // base
+    if (n==0) return -100;      // base         // 1로 하면 확인 못하는 원소가 생길 수도?!
 
     int l, r, m;
     l = 0; r = n - 1;
@@ -37,7 +37,7 @@ int recursive_binary_search_v1(int arr[], int n, int x) {
     else {  // if (arr[m] < x) 
         int result = recursive_binary_search_v1(arr + m + 1, n - (m + 1), x);
         if (result == -100) return result;
-        return result + m + 1;
+        return result + m + 1;      // m+1을 더하므로, -1이 반환될 때, 최종적으로 -1이 반환되지 않음 - 처리 필요
     }
 }
 
