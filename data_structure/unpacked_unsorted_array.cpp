@@ -27,11 +27,11 @@ uuArray::uuArray(int array[], int n) {
         this->mark[i] = 1;
     }
     count = n;
-    maxIndex = n;
+    maxIndex = n-1;
 }
 
 int uuArray::searchX(int x) {
-    for (int i=0; i<maxIndex; i++) {
+    for (int i=0; i<=maxIndex; i++) {
         if (mark[i] && arr[i] == x) return i;
     }
     return -1;
@@ -70,20 +70,27 @@ int uuArray::deleteX(int x) {
     mark[index] = 0;
     arr[index] = emptyListHead;
     emptyListHead = index;
+    count--;
+
+    if (index == maxIndex) {
+        for(int i=maxIndex-1; i>=0; i--) {
+            if (mark[i]) { maxIndex = i; break; }
+        }
+    }
 
     return index;
 }
 
 void uuArray::printArray() {
-    for (int i=0; i<maxIndex; i++) {
+    for (int i=0; i<=maxIndex; i++) {
         cout << i << '\t';
     }
     cout << endl;
-    for (int i=0; i<maxIndex; i++) {
+    for (int i=0; i<=maxIndex; i++) {
         cout << arr[i] << '\t';
     }
     cout << endl;
-    for (int i=0; i<maxIndex; i++) {
+    for (int i=0; i<=maxIndex; i++) {
         char check = 'X';
         if (mark[i]) check = 'O';
         cout << check << '\t';
