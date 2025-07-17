@@ -24,7 +24,7 @@ private:
     bool mark[MAX];
     int emptyListHead = -1;
     int count = 0;
-    int maxIndex = 0;
+    int maxIndex = 0;       // 굳이 줄일 필요가 없다! 어차피 한 번 사용했었으면 값이 남아있을 테니까
     int left, right;
 public:
     usArray(int array[], int n, bool sorted);
